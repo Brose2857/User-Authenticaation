@@ -1,0 +1,63 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Multiple user login</title>
+  </head>
+  <body>
+      <h1>User Registration page</h1>
+        </div>
+     <span class="mb-0 text-muted">
+  {% if msg %}
+      {{ msg | safe }}
+   {% else %}
+ Login page 
+  {% endif %}
+</span>
+   <form  method="post">
+      {% csrf_token %}
+    <div>
+      <label for="username">Username</label>
+         {{ form.username }}
+     </div>
+    <div>
+      <label for="email">Email</label>
+        {{ form.email}}
+    </div>
+    <div>
+       <label for="password">Password</label>
+        {{ form.password1 }}
+    </div>
+    <div>
+        <label for="password">confirm Password</label>
+         {{ form.password2 }}
+    </div>
+    <div>
+      <label class="control control--checkbox mb-0">Admin<span class="caption">Admin</span>
+           {{ form.is_admin }}
+        <div class="control__indicator"></div>
+      </label>
+    </div>
+    <div >
+      <label class="control control--checkbox mb-0">Customer<span class="caption">customer</span>
+          {{ form.is_customer }}
+        <div class="control__indicator"></div>
+       </label>
+    </div>
+        <div class="d-flex mb-5 align-items-center">
+          <label class="control control--checkbox mb-0">Employee<span class="caption">employee</span>
+               {{ form.is_employee }}
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+          <span class="text-error">{{ form.errors }}</span>
+        <input type="submit"  value="Register" class="btn btn-pill text-white btn-block btn-primary">
+</form>
+  
+  </div>
+  </body>
+</html>
